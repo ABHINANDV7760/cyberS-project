@@ -1,0 +1,32 @@
+# CyberShield 360 (Python part) - dependencies
+# Requires Python 3.10 or newer (the code uses the `str | None` type syntax).
+#
+# Install:   pip install -r requirements.txt
+# Run app:   cd cybershield360 && streamlit run app.py
+# Run tests: cd cybershield360 && pytest tests/ -v
+#
+# Only packages the project actually imports are listed. Everything else
+# (sqlite3, hashlib, pathlib, ipaddress, socket, zipfile, dataclasses, ...)
+# is in the Python standard library and needs no install.
+
+# --- Web interface (cybershield360/app.py) ---
+streamlit>=1.30,<2.0
+
+# --- Charts and tables (app.py) ---
+plotly>=5.18,<7.0
+pandas>=2.0,<4.0
+
+# --- HTTP / SSRF-safe fetching (utils/safe_fetch.py, integrations/) ---
+requests>=2.31,<3.0
+urllib3>=2.0,<3.0
+
+# --- Testing (cybershield360/tests/) ---
+pytest>=7.4,<9.0
+
+# --- Optional ---
+# API keys (VirusTotal, URLhaus, Google Safe Browsing, OpenAI Whisper) are read
+# from environment variables, not from a .env file. Set them in your shell
+# before starting the app, or the app runs in No-API mode with demo data.
+#
+# NOTE: The Website Security Inspector is a separate Node.js app. Its
+# dependencies are in package.json (install with `npm install`), not here.
